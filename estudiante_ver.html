@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estudiante {{ estudiante.id_estudiante }}</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <main class="container py-5">
+        <article class="detail-card">
+            <span class="eyebrow">Ficha de estudiante</span>
+            <h1>{{ estudiante.nombre }}</h1>
+            <p class="subtitle">Información completa del registro #{{ estudiante.id_estudiante }}.</p>
+            <dl class="student-detail">
+                <div><dt>Nombre</dt><dd>{{ estudiante.nombre }}</dd></div>
+                <div><dt>E-mail</dt><dd>{{ estudiante.email }}</dd></div>
+                <div><dt>Fecha de creación</dt><dd>{{ estudiante.created_at }}</dd></div>
+            </dl>
+            <div class="actions">
+                <a href="{{ url_for('editar_estudiante', id_estudiante=estudiante.id_estudiante) }}" class="btn btn-warning">Editar</a>
+                <a href="{{ url_for('eliminar_estudiante', id_estudiante=estudiante.id_estudiante) }}" class="btn btn-danger" onclick="return confirm('¿Estás seguro de eliminar este estudiante?');">Eliminar</a>
+                <a href="{{ url_for('estudiantes') }}" class="btn btn-outline-secondary">Volver</a>
+            </div>
+        </article>
+    </main>
+</body>
+</html>
